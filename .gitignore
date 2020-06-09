@@ -114,7 +114,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-btre/local_settings.py
+bookstore_project/local_settings.py
 
 # Spyder project settings
 .spyderproject
