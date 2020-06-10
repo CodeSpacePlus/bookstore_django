@@ -1,5 +1,6 @@
 {% extends '_base.html' %}
 {% load static %}
+{% load socialaccount %}
 
 {% block title %}Home{% endblock %}
 
@@ -8,10 +9,12 @@
     <img src="{% static 'images/djangoforprofessionals.jpg' %}" class="bookcover">
     {% if user.is_authenticated %}
         <p>Hi {{ user.email }}</p>
-        <a href="{% url 'logout' %}">Log Out</a>
+        <a href="{% url 'account_logout' %}">Log Out</a>
     {% else %}
         <p>You're not logged in.</p>
-        <a href="{% url 'login' %}">Log In</a>
-        <a href="{% url 'signup' %}">Sign Up</a>
+        <a href="{% url 'account_login' %}" class="btn btn-primary">Log In</a>
+        <a href="{% url 'account_signup' %}">Sign Up</a>
+        <a href="{% provider_login_url 'github' %}" class="btn btn-dark btn-block">Sign Up with Github</a>
+        <a href="{% provider_login_url 'discord' %}" class="btn btn-info btn-block">Sign Up with Discord</a>
     {% endif %}
 {% endblock %}
