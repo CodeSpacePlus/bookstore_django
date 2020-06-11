@@ -14,7 +14,12 @@ import os
 import environ
 
 env = environ.Env(
-    DEBUG=(bool, False)
+    DEBUG=(bool, False),
+    EMAIL_HOST=(str, 'smtp.gmail.com'),
+    EMAIL_HOST_USER=(str, 'test@email.com'),
+    EMAIL_HOST_PASSWORD=(str, ''),
+    EMAIL_PORT=(int, 587),
+    EMAIL_USE_TLS=(bool, True),
 )
 environ.Env.read_env()
 
@@ -160,4 +165,10 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = 'admin@djangobookstore.com'
+# EMAIL_HOST = env.str('EMAIL_HOST')
+# EMAIL_PORT = env.int('EMAIL_PORT')
+# EMAIL_HOST_USER = env.str('EMAIL_HOST_USER')
+# EMAIL_PASSWORD = env.str('EMAIL_HOST_PASSWORD')
+# EMAIL_USE_TLS = env.bool('EMAIL_USE_TLS')
