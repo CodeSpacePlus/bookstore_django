@@ -20,6 +20,8 @@ env = environ.Env(
     EMAIL_HOST_PASSWORD=(str, ''),
     EMAIL_PORT=(int, 587),
     EMAIL_USE_TLS=(bool, True),
+    STRIPE_TEST_PUBLISHABLE_KEY=(str, ''),
+    STRIPE_TEST_SECRET_KEY=(str, ''),
 )
 environ.Env.read_env()
 
@@ -52,6 +54,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
     'books.apps.BooksConfig',
+    'orders.apps.OrdersConfig',
 
     # 3rd party, modules
     'crispy_forms',
@@ -180,3 +183,8 @@ DEFAULT_FROM_EMAIL = 'admin@djangobookstore.com'
 # EMAIL_HOST_USER = env.str('EMAIL_HOST_USER')
 # EMAIL_PASSWORD = env.str('EMAIL_HOST_PASSWORD')
 # EMAIL_USE_TLS = env.bool('EMAIL_USE_TLS')
+
+
+# Stripe
+STRIPE_TEST_PUBLISHABLE_KEY = env.str('STRIPE_TEST_PUBLISHABLE_KEY')
+STRIPE_TEST_SECRET_KEY = env.str('STRIPE_TEST_SECRET_KEY')
